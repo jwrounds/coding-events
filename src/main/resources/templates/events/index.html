@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<header th:replace="fragments :: header"></header>
+
+<p th:unless="${list} and ${list.size()}">No events!</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Contact Email</th>
+        </tr>
+    </thead>
+    <tr th:each="event : ${list}">
+        <td th:text="${event.id}"></td>
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.description}"></td>
+        <td th:text="${event.type.displayName}"></td>
+        <td th:text="${event.contactEmail}"></td>
+        <!-- <td>
+            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
+        </td> -->
+    </tr>
+</table>
+</body>
+</html>
