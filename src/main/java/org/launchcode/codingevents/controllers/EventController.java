@@ -5,6 +5,7 @@ import org.launchcode.codingevents.data.EventCategoryRepository;
 import org.launchcode.codingevents.data.EventRepository;
 import org.launchcode.codingevents.models.Event;
 import org.launchcode.codingevents.models.EventCategory;
+import org.launchcode.codingevents.models.EventDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,18 @@ public class EventController {
             }
         }
         return "events/index";
+    }
+
+    @GetMapping("details/{eventId}")
+    public String renderEventDetails(@PathVariable Integer eventId, Model model) {
+        if (eventRepository.findById(eventId).isPresent()) {
+            Event event = eventRepository.findById(eventId).get();
+            model.addAttribute("title", "Details for " + event.getName());
+            model.addAttribute("details", event.getEventDetails());
+        } else {
+            model.addAttribute("title", "No Event Found!");
+        }
+        return "events/details";
     }
 
     @GetMapping("create")

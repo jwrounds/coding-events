@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+</head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+    <table class="table table-striped">
+        <tr>
+            <td><strong>ID</strong></td>
+            <td th:text="${details.id}"></td>
+        </tr>
+        <tr>
+            <td><strong>Description</strong></td>
+            <td th:text="${details.description}"></td>
+        </tr>
+        <tr>
+            <td><strong>Contact email</strong></td>
+            <td th:text="${details.contactEmail}"></td>
+        </tr>
+    </table>
+</body>
+</html>

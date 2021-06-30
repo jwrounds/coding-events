@@ -10,19 +10,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Contact Email</th>
+            <th>Event Name</th>
         </tr>
     </thead>
     <tr th:each="event : ${list}">
-        <td th:text="${event.id}"></td>
-        <td th:text="${event.name}"></td>
-        <td th:text="${event.description}"></td>
-        <td th:text="${event.eventCategory.name}"></td>
-        <td th:text="${event.contactEmail}"></td>
+        <td><a th:text="${event.name}" th:href="@{/events/details/{id}(id=${event.id})}"></a></td>
         <!-- <td>
             <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
         </td> -->
